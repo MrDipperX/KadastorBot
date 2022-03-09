@@ -72,7 +72,7 @@ def choose_lang(message):
 
 def go_to_fio(message):
     try:
-        bot.send_message(message.from_user.id, lang[get_user_lang(message)]['Set_fio'] + "Akmal Xidoyatov Rustam o'gli")
+        bot.send_message(message.from_user.id, lang[get_user_lang(message)]['Set_fio'])
         bot.register_next_step_handler(message, set_fio)
     except Exception as e:
         print(e)
