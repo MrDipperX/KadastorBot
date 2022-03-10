@@ -83,18 +83,9 @@ def set_fio(message):
         full_name = message.text.split(' ', 2)
         db_conn = PgConn(config.host, config.dbname, config.user, config.port, config.password)
         db_conn.set_user_fullname(message.from_user.id, full_name[0], full_name[1], full_name[2])
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-
         if get_user_temp(message) == 'no':
-            bot.send_message(message.from_user.id, lang[get_user_lang(message)]['Fullname_updated'],
-                             reply_markup=keyboard)
             set_telp(message)
         else:
-            bot.send_message(message.from_user.id, lang[get_user_lang(message)]['Fullname_updated'],
-                             reply_markup=keyboard)
-            back_btn = types.KeyboardButton(f"{emoji.emojize(':left_arrow:')} "
-                                            f"{lang[get_user_lang(message)]['Back_btn']}")
-            keyboard.add(back_btn)
             menu(message)
     except (Exception, IndexError) as e:
         print(e)
@@ -145,7 +136,6 @@ def get_contact(message):
     try:
         db = PgConn(config.host, config.dbname, config.user, config.port, config.password)
         db.add_user_contact(message.from_user.id, message.contact.phone_number)
-        bot.send_message(message.from_user.id, f"{lang[get_user_lang(message)]['Numb_updated']}")
         menu(message)
     except Exception as e:
         print(e)
@@ -547,8 +537,8 @@ def mess(message):
             bot.send_location(message.from_user.id, config.latitude, config.longitude)
 
         elif get_message_bot == f"{emoji.emojize(':telephone:')} {lang[get_user_lang(message)]['Contacts_btn']}":
-            bot.send_contact(message.from_user.id, "998983114014", "BKM")
-            bot.send_contact(message.from_user.id, "998951708181", "BKM")
+            bot.send_contact(message.from_user.id, "998983114014", "TVBKM")
+            bot.send_contact(message.from_user.id, "998951708181", "TVBKM")
 
         elif get_message_bot == f"{emoji.emojize(':smiling_face_with_sunglasses:')} " \
                                 f"{lang[get_user_lang(message)]['Why_us_btn']}":
