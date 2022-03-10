@@ -94,7 +94,7 @@ class PgConn:
             self.cur.execute("DELETE FROM users WHERE id_tg = %s;", (user_id,))
             self.conn.commit()
 
-    def set_user_fullname(self, user_id, name, surname, patronymic):
+    def set_user_fullname(self, user_id, surname, name, patronymic):
         with self.conn:
             self.cur.execute("UPDATE users SET name = %s, surname = %s, patronymic = %s WHERE id_tg = %s;",
                              (name, surname, patronymic, user_id))
@@ -102,7 +102,7 @@ class PgConn:
 
     def get_user_fullname(self, user_id):
         with self.conn:
-            self.cur.execute("SELECT name, surname, patronymic FROM users WHERE id_tg = %s", (user_id,))
+            self.cur.execute("SELECT surname, name, patronymic FROM users WHERE id_tg = %s", (user_id,))
             return self.cur.fetchone()
 
     def add_user_contact(self, user_id, user_phone):
