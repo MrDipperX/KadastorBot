@@ -444,7 +444,7 @@ def mess(message):
             else:
                 db_conn.set_user_lang("uz", message.from_user.id)
                 db_conn.set_user_temp('some_lang', message.from_user.id)
-                settings(message)
+                menu(message)
 
         elif get_message_bot == f"{emoji.emojize(':Russia:')} Русский":
             if get_user_temp(message) == 'no':
@@ -453,7 +453,7 @@ def mess(message):
             else:
                 db_conn.set_user_lang("ru", message.from_user.id)
                 db_conn.set_user_temp('some_lang', message.from_user.id)
-                settings(message)
+                menu(message)
 
         elif get_message_bot == f"{emoji.emojize(':United_Kingdom:')} English":
             if get_user_temp(message) == 'no':
@@ -462,7 +462,7 @@ def mess(message):
             else:
                 db_conn.set_user_lang("en", message.from_user.id)
                 db_conn.set_user_temp('some_lang', message.from_user.id)
-                settings(message)
+                menu(message)
 
         elif get_message_bot == f"{emoji.emojize(':gear:')} {lang[get_user_lang(message)]['Settings_btn']}":
             settings(message)
