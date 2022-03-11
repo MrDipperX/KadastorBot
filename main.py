@@ -317,6 +317,18 @@ def ad_text(message):
         print(e)
 
 
+def get_eval_type(message):
+    evals = [lang['ru']['Evaluate_house'], lang['ru']['Privatization_house'], lang['ru']['Evaluate_buildings'],
+             lang['ru']['Evaluate_estate'], lang['ru']['Evaluate_auto'], lang['ru']['Evaluate_estate_deposite'],
+             lang['ru']['Evaluate_movable_estate'], lang['ru']['Evaluate_business'], lang['ru']['Evaluate_real_estate'],
+             lang['ru']['Evaluate_investments'], lang['ru']['Revaluate_base_capitals'],
+             lang['ru']['Evaluate_as_complex']]
+
+    for i in range(len(evals)):
+        if get_user_temp(message) == f'eval_{i+1}':
+            return evals[i]
+
+
 @bot.message_handler(content_types=['photo'])
 def photo_downloader(message):
     try:
@@ -524,6 +536,7 @@ def mess(message):
                 pics = [InputMediaPhoto(open(pic[4], "rb")) for pic in album]
                 bot.send_media_group(config.channel_id, pics)
                 bot.send_message(config.channel_id, f"{full_name[0]} {full_name[1]} {full_name[2]}")
+                bot.send_message(config.channel_id, get_eval_type(message))
                 bot.send_message(message.from_user.id, lang[get_user_lang(message)]['Wait_operators'])
             else:
                 bot.send_message(message.from_user.id, lang[get_user_lang(message)]['Wait_operators'])
