@@ -6,11 +6,11 @@ TOKEN = "5244907529:AAHfbopb12DTtREkNucC3JJOspmUo4Kc3Yk"
 # port = 5432
 # password = "Naruhina"
 
-host = "ec2-44-192-245-97.compute-1.amazonaws.com"
-dbname = "davlrk66432v1v"
-user = "aqtyxwthsfoezf"
+host = "ec2-18-210-191-5.compute-1.amazonaws.com"
+dbname = "deidt1e4ihd6bk"
+user = "pshqtlvhhxfrag"
 port = 5432
-password = "c446a9ce18e97841107f9673a4ce7cf5ee98894fdebd3980ea91de747d798a0d"
+password = "5f4e4e14724cb7854a8118f6a543ba5ef3122e66f7d62a473af8a56865fb80cc"
 
 numbs = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 evals = ["eval_" + str(i+1) for i in range(12)]
