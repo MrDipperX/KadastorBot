@@ -82,7 +82,7 @@ class PgConn:
             self.cur.execute(f"SELECT id FROM users WHERE id_tg={user_id}")
             id_data = self.cur.fetchone()
             if id_data is None:
-                date_login = datetime.fromtimestamp(message_date).strftime('%d-%m-%y %H:%M:%S')
+                date_login = datetime.fromtimestamp(message_date).strftime('%m-%d-%y %H:%M:%S')
                 self.cur.execute("INSERT INTO users(id_tg, username, date_reg) VALUES(%s,%s,%s);",
                                  (user_id, user_name, date_login))
                 self.conn.commit()
