@@ -16,7 +16,7 @@ numbs = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 evals = ["eval_" + str(i+1) for i in range(12)]
 channel_id = -1001705607682
 
-ads_directory = 'Ads/'
+ads_directory = 'Ads'
 photos_directory = 'Photos/'
 
 latitude = 41.281574

@@ -9,6 +9,7 @@ import json
 import emoji
 from datetime import datetime
 import os
+from pathlib import Path
 import csv
 from openpyxl import Workbook
 
@@ -381,8 +382,7 @@ def photo_downloader(message):
         else:
             return
 
-        if not os.path.isdir(directory):
-            os.makedirs(directory)
+        Path(directory).mkdir(parents=True, exist_ok=True)
         src = f"{directory}/" \
               f"IMG_{now.year}{now.month}{now.day}_{now.hour}{now.minute}{now.second}_{now.microsecond}.jpg"
         with open(src, 'wb') as new_file:
@@ -431,9 +431,8 @@ def gif_n_video(message):
                 type_media = 'gif'
             downloaded_file = bot.download_file(file_info.file_path)
             now = datetime.now()
-            if not os.path.isdir(f"{config.ads_directory}"):
-                os.makedirs(f"{config.ads_directory}")
-            src = f"{config.ads_directory}_{name}_{now.year}{now.month}{now.day}_{now.hour}{now.minute}{now.second}_" \
+            Path(config.ads_directory+'/').mkdir(parents=True, exist_ok=True)
+            src = f"{config.ads_directory}/{name}_{now.year}{now.month}{now.day}_{now.hour}{now.minute}{now.second}_" \
                   f"{now.microsecond}.{type_media}"
             with open(src, 'wb') as new_file:
                 new_file.write(downloaded_file)
